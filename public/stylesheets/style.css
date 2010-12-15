@@ -114,8 +114,7 @@ a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }
 
 
-ul, ol { margin-left: 1.8em; }
-ol { list-style-type: decimal; }
+ol, ul { list-style-type: none; }
 
 /* Remove margins for navigation lists */
 nav ul, nav li { margin: 0; } 
@@ -221,10 +220,15 @@ button {  width: auto; overflow: visible; }
 
 
  /* Primary Styles
-    Author: 
+    Author: Dimitar Haralanov
  */
 
-
+html, body {
+	height: 100%;
+}
+html {
+	background: transparent url('/images/main-background.jpg') repeat 0 0;
+}
 
 
 

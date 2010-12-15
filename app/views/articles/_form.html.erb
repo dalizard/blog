@@ -11,6 +11,24 @@
     </div>
   <% end %>
 
+	<fieldset>
+		<ol>
+			<li>
+				<%= f.label :title %>
+				<%= f.text_field :title %>
+			</li>
+			<li>
+				<%= f.label :published_at %>
+				<%= f.date_select :published_at %>
+			</li>
+			<li>
+				<%= f.label :body %>
+				<%= f.text_area :body %>
+			</li>
+		</ol>
+	</fieldset>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
