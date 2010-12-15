@@ -230,8 +230,23 @@ html {
 	background: transparent url('/images/main-background.jpg') repeat 0 0;
 }
 
+.content-wrapper {
+	width: 90em;
+	margin: 0 auto;
+}
 
-
+body > header hgroup h1 {
+	width: 148px;
+	height: 210px;
+	background: transparent url('/images/logo.png') no-repeat 0 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-indent: 148px;
+}
+body > header hgroup h1 a {
+	display: block;
+	height: 100%;
+}
 
 
 

@@ -27,7 +27,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+	<header>
+		<div class="content-wrapper">
+			<hgroup>
+				<h1><a href="<%= root_url %>">Forebits</a></h1>
+				<h2>A blog of Dimitar Haralanov</h2>
+			</hgroup>
+		</div>
+	</header>
 <%= yield %>
 
 <!--[if lt IE 7 ]>
