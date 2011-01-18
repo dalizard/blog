@@ -1,24 +1,26 @@
 <div class="content-wrapper">
 
-<h1>Listing articles</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @articles.each do |article| %>
-  <tr>
-    <td><%= link_to 'Show', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+	<article class="post">
+		<div>
+			<h1><%= article.title %></h1>
+			<div>
+				<%= article.body %>
+			</div>
+			<aside>
+				<div>
+					<span><%= article.published_at.strftime("%d") %></span>
+					<span><%= article.published_at.strftime("%B") %></span>	
+					<span><%= article.published_at.strftime("%Y") %></span>
+				</div>
+			</aside>
+		</div>
+	</article>
+	
+  <%= link_to 'Show', article %>
+  <%= link_to 'Edit', edit_article_path(article) %>
+	<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>
-</table>
-
-<br />
 
 <%= link_to 'New Article', new_article_path %>
 
