@@ -27,7 +27,7 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-	<header>
+	<header role="banner">
 		<div class="content-wrapper">
 			<hgroup>
 				<h1><a href="<%= root_url %>">Forebits</a></h1>
@@ -42,7 +42,16 @@
 			</section>
 		</div>
 	</header>
-<%= yield %>
+	
+	<section role="main">
+		<%= yield %>
+	</section>
+	
+	<footer role="contentinfo">
+			<div class="content-wrapper">
+				<p>Copyright &copy; 2011 Dimitar Haralanov</p>
+			</div>
+	</footer>
 
 <!--[if lt IE 7 ]>
   <%= javascript_include_tag 'dd_belatedpng' %>
