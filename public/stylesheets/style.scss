@@ -233,8 +233,10 @@ body {
 	font-family: "calluna-sans-1","calluna-sans-2",sans-serif;
 }
 .content-wrapper {
+	position: relative;
 	width: 60em;
 	margin: 0 auto;
+	z-index: 1;
 }
 section[role='main'] {
 	position: relative;
@@ -413,11 +415,11 @@ body > header hgroup {
 		}
 	}
 	footer {
-		position: absolute;
-		z-index: -1;
-		bottom: 10px;
-		right: -47px;
-		a {
+		a.read-more {
+			position: absolute;
+			z-index: -1;
+			bottom: 10px;
+			right: -47px;
 			display: block;
 			width: 101px;
 			height: 42px;
@@ -428,6 +430,18 @@ body > header hgroup {
 			text-decoration: none;
 			text-transform: uppercase;
 			padding-left: 8px;
+		}
+		a.share {
+			display: inline-block;
+			position: absolute;
+			bottom: -1em;			
+			-moz-border-radius: 0 0 .2em .2em;
+			-webkit-border-radius: 0 0 .2em .2em;
+			border-radius: 0 0 .2em .2em;			
+			display: inline-block;
+			background-color: rgba(204, 204, 204, 1);
+			padding: .5em;
+			z-index: -1;
 		}
 	}
 }
