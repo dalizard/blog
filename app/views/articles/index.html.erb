@@ -3,18 +3,21 @@
 	<% @articles.each do |article| %>
 		<article class="post">
 			<div>
-				<h1><%= article.title %></h1>
-				<div>
+				<hgroup>
+					<h1><%= link_to article.title, article %></h1>
+					<h2>
+						<time datetime="2010-05-06" pubdate>
+							<div>
+								<span><%= article.published_at.strftime("%d") %></span>
+								<span><%= article.published_at.strftime("%B") %></span>
+								<span><%= article.published_at.strftime("%Y") %></span>
+							</div>
+						</time>
+					</h2>
+				</hgroup>
+				<section>
 					<%= article.body %>
-				</div>
-				<aside>
-					<!-- <time datetime="2010-05-06" pubdate>6 May 2010</time> -->
-					<div>
-						<span><%= article.published_at.strftime("%d") %></span>
-						<span><%= article.published_at.strftime("%B") %></span>	
-						<span><%= article.published_at.strftime("%Y") %></span>
-					</div>
-				</aside>			
+				</section>
 			</div>
 			<footer>
 				<%= link_to 'Read More', article %>
