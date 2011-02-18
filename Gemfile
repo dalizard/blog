@@ -1,10 +1,11 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.4'
-gem 'mongoid', '2.0.0.beta.20'
-gem 'bson_ext'
+gem 'mongoid', '2.0.0.rc.7'
+gem 'bson_ext', '~> 1.2'
 gem 'jquery-rails'
 gem 'haml'
+gem 'mongoid_slug', :require => 'mongoid/slug'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

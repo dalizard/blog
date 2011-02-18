@@ -1,5 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="content-wrapper">
+	<p id="notice"><%= notice %></p>
 
+	<article class="post">
+		<div>
+			<hgroup>
+				<h1><%= link_to @article.title, @article %></h1>
+				<h2>
+					<time datetime="2010-05-06" pubdate>
+						<div>
+							<span><%= @article.published_at.strftime("%d") %></span>
+							<span><%= @article.published_at.strftime("%B") %></span>
+							<span><%= @article.published_at.strftime("%Y") %></span>
+						</div>
+					</time>
+				</h2>
+			</hgroup>
+			<section>
+				<%= @article.body %>
+			</section>
+		</div>
+		<footer>
+			<%= link_to 'Edit', edit_article_path(@article) %> |
+			<%= link_to 'Back', articles_path %>
+		</footer>
+	</article>	
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+</div>

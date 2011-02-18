@@ -1,7 +1,5 @@
 defaults: &defaults
   host: localhost
-  username: rails
-  password: q256mnt00v9
   # slaves:
   #   - host: slave1.local
   #     port: 27018
@@ -9,13 +7,21 @@ defaults: &defaults
   #     port: 27019
 
 development:
-  <<: *defaults
+  host: localhost
+  username: rails
+  password: q256mnt00v9
   database: blog_development
 
 test:
-  <<: *defaults
+  host: localhost
+  username: rails
+  password: q256mnt00v9
   database: blog_test
 
 # set these environment variables on your prod server
 production:
-  uri: <%= ENV['MONGOHQ_URL'] %>
+  host: <%= ENV['MONGOID_HOST'] %>
+  port: <%= ENV['MONGOID_PORT'] %>
+  username: <%= ENV['MONGOID_USERNAME'] %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] %>
