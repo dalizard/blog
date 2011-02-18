@@ -12,7 +12,7 @@ jQuery(document).ready(function () {
 					right: '-122px'
 					}, 200);
 				jQuery(this).find('.share').animate({
-					bottom: '-3.2em'
+					bottom: '-3.9em'
 				}, 200);			
 			},
 			out: function() {

@@ -16,12 +16,12 @@
 					</h2>
 				</hgroup>
 				<section>
-					<%= article.body %>
+					<%= truncate(article.body, :length => 700, :separator => ' ') %>
 				</section>
 			</div>
 			<footer>
 				<%= link_to 'Read More', article, :class => 'read-more' %>
-				<%= link_to 'Twitter', 'www.twitter.com', :class => 'share' %>
+				<%= link_to 'Tweet', "http://twitter.com/home?status=#{article.title}", :class => 'share' %>
 			</footer>
 		</article>
 	
