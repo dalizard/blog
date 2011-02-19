@@ -1,34 +1,30 @@
-<div class="content-wrapper">
+<% @articles.each do |article| %>
+	<article class="post">
+		<div>
+			<hgroup>
+				<h1><%= link_to article.title, article %></h1>
+				<h2>
+					<time datetime="2010-05-06" pubdate>
+						<div>
+							<span><%= article.published_at.strftime("%d") %></span>
+							<span><%= article.published_at.strftime("%B") %></span>
+							<span><%= article.published_at.strftime("%Y") %></span>
+						</div>
+					</time>
+				</h2>
+			</hgroup>
+			<section>
+				<%= truncate(article.body, :length => 700, :separator => ' ') %>
+			</section>
+		</div>
+		<footer>
+			<%= link_to 'Read More', article, :class => 'read-more' %>
+			<%= link_to 'Tweet', "http://twitter.com/home?status=#{article.title}", :class => 'share' %>
+		</footer>
+	</article>
 
-	<% @articles.each do |article| %>
-		<article class="post">
-			<div>
-				<hgroup>
-					<h1><%= link_to article.title, article %></h1>
-					<h2>
-						<time datetime="2010-05-06" pubdate>
-							<div>
-								<span><%= article.published_at.strftime("%d") %></span>
-								<span><%= article.published_at.strftime("%B") %></span>
-								<span><%= article.published_at.strftime("%Y") %></span>
-							</div>
-						</time>
-					</h2>
-				</hgroup>
-				<section>
-					<%= truncate(article.body, :length => 700, :separator => ' ') %>
-				</section>
-			</div>
-			<footer>
-				<%= link_to 'Read More', article, :class => 'read-more' %>
-				<%= link_to 'Tweet', "http://twitter.com/home?status=#{article.title}", :class => 'share' %>
-			</footer>
-		</article>
-	
-	  <!-- <%= link_to 'Edit', edit_article_path(article) %>
-		<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %> -->
-	<% end %>
+  <!-- <%= link_to 'Edit', edit_article_path(article) %>
+	<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %> -->
+<% end %>
 
-	<!-- <%= link_to 'New Article', new_article_path %> -->
-
-</div>
+<!-- <%= link_to 'New Article', new_article_path %> -->

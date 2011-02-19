@@ -6,6 +6,7 @@ gem 'bson_ext', '~> 1.2'
 gem 'jquery-rails'
 gem 'haml'
 gem 'mongoid_slug', :require => 'mongoid/slug'
+gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
