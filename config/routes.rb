@@ -1,7 +1,7 @@
 Blog::Application.routes.draw do
-  get "logout" => "sessions#destroy", :as => "logout"
-  get "login" => "sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"
+  match '/logout' => "sessions#destroy", :as => "logout"
+  match '/login' => "sessions#new", :as => "login"
+  match '/signup' => "users#new", :as => "signup"
 
   resources :articles
   resources :users
