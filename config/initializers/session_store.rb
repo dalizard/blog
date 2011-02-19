@@ -8,5 +8,4 @@
 #Blog::Application.config.session_store :active_record_store
 
 # Use MongoDB to store sessions
-require "mongo_session_store/mongoid"
 Blog::Application.config.session_store = :mongoid_store

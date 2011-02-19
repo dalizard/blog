@@ -7,7 +7,7 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'mongoid_slug', :require => 'mongoid/slug'
 gem 'bcrypt-ruby', :require => 'bcrypt'
-gem 'mongo_session_store'
+gem 'mongoid_session_store'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
