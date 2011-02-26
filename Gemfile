@@ -5,6 +5,7 @@ gem 'mongoid', '2.0.0.rc.7'
 gem 'bson_ext'
 gem 'jquery-rails'
 gem 'haml'
+gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'mongoid_slug', :require => 'mongoid/slug'
 gem 'mongoid_session_store'
 

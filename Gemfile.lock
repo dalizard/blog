@@ -28,7 +28,8 @@ GEM
       activemodel (= 3.0.4)
       activesupport (= 3.0.4)
     activesupport (3.0.4)
-    arel (2.0.8)
+    arel (2.0.9)
+    bcrypt-ruby (2.1.4)
     bson (1.2.4)
     bson_ext (1.2.4)
     builder (2.1.2)
@@ -93,6 +94,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby
   bson_ext
   haml
   jquery-rails
