@@ -22,6 +22,40 @@ set :db_file, "mongoid.yml"
 set :db_drop, '--drop' # drop database (rewrites everything)
 
 
+namespace :deploy do
+  desc "Restarting mod_rails with restart.txt"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  [:start, :stop].each do |t|
+    desc "#{t} task is a no-op with mod_rails"
+    task t, :roles => :app do ; end
+  end
+end
+
+# Disable the built in disable command and setup some intelligence so we can have images.
+after "deploy:update_code", "deploy:web:update_maintenance_page"
+disable_path = "#{shared_path}/system/maintenance/"
+namespace :deploy do
+  namespace :web do
+    desc "Disables the website by putting the maintenance files live."
+    task :disable, :roles => :web do
+      on_rollback { run "mv #{disable_path}index.html #{disable_path}index.disabled.html" }
+      run "mv #{disable_path}index.disabled.html #{disable_path}index.html"
+    end 
+    desc "Enables the website by disabling the maintenance files."
+    task :enable, :roles => :web do
+        run "mv #{disable_path}index.html #{disable_path}index.disabled.html"
+    end 
+    desc "Copies your maintenance from public/maintenance to shared/system/maintenance."
+    task :update_maintenance_page, :roles => :web do
+      run "rm -rf #{shared_path}/system/maintenance/; true"
+      run "cp -r #{release_path}/public/maintenance #{shared_path}/system/"
+    end
+  end
+end
+
 # Based on http://gist.github.com/111597 http://gist.github.com/339471
 #
 # Capistrano sync.rb task for syncing databases and directories between the
@@ -144,6 +178,7 @@ set :db_drop, '--drop' # drop database (rewrites everything)
  
         server, port = host_and_port
         Array(fetch(:sync_directories, [])).each do |syncdir|
+          logger.info "The current dir is: #{syncdir}"
           destination, base = Pathname.new(syncdir).split
           if File.directory? "#{syncdir}"
             # Make a backup
