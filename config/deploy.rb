@@ -34,6 +34,7 @@ namespace :deploy do
   end
 end
 
+
 # Disable the built in disable command and setup some intelligence so we can have images.
 after "deploy:update_code", "deploy:web:update_maintenance_page"
 disable_path = "#{shared_path}/system/maintenance/"
@@ -55,6 +56,7 @@ namespace :deploy do
     end
   end
 end
+
 
 # Based on http://gist.github.com/111597 http://gist.github.com/339471
 #
