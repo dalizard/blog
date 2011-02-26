@@ -11,3 +11,4 @@ doc/app
 #*#
 .DS_Store
 .sass-cache
+.bundle\n

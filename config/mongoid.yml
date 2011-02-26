@@ -8,18 +8,13 @@ defaults: &defaults
 
 development:
   host: localhost
-  username: rails
-  password: q256mnt00v9
   database: blog_development
 
 test:
   host: localhost
-  username: rails
-  password: q256mnt00v9
   database: blog_test
 
 # set these environment variables on your prod server
 production:
-  host: <%= ENV['localhost'] %>
-  port: <%= ENV['27017'] %>
-  database: <%= ENV['blog'] %>
+  host: localhost
+  database: blog
