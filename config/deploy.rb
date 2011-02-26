@@ -50,7 +50,7 @@ namespace :deploy do
         run "mv #{disable_path}index.html #{disable_path}index.disabled.html"
     end 
     desc "Copies your maintenance from public/maintenance to shared/system/maintenance."
-    task :update_maintenance_page, :roles => :web do
+    task :update, :roles => :web do
       run "rm -rf #{shared_path}/system/maintenance/; true"
       run "cp -r #{release_path}/public/maintenance #{shared_path}/system/"
     end
