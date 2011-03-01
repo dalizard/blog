@@ -52,7 +52,7 @@ namespace :deploy do
     desc "Copies your maintenance from public/maintenance to shared/system/maintenance."
     task :update, :roles => :web do
       run "rm -rf #{shared_path}/system/maintenance/; true"
-      run "cp -r #{release_path}/public/maintenance #{shared_path}/system/"
+      run "cp -r #{current_path}/public/maintenance #{shared_path}/system/"
     end
   end
 end
