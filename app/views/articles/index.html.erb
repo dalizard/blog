@@ -6,7 +6,7 @@
 				<h2>
 					<time datetime="2010-05-06" pubdate>
 						<div>
-							<span><%= article.published_at.strftime("%d") %></span>
+							<span><%= article.published_at.strftime("%-d") %></span>
 							<span><%= article.published_at.strftime("%B") %></span>
 							<span><%= article.published_at.strftime("%Y") %></span>
 						</div>
@@ -14,7 +14,7 @@
 				</h2>
 			</hgroup>
 			<section>
-				<%= truncate(article.body, :length => 700, :separator => ' ') %>
+				<%= raw(truncate(article.body, :length => 700, :separator => ' ')) %>
 			</section>
 		</div>
 		<footer>

@@ -14,6 +14,10 @@
 	<fieldset>
 		<ol>
 			<li>
+				<p>Article #: <%= @article.articleid %></p>
+				<%= f.text_field :articleid %>
+			</li>
+			<li>
 				<%= f.label :title %>
 				<%= f.text_field :title %>
 			</li>

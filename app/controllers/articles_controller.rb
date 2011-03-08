@@ -30,6 +30,12 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
 
+    if Article.last
+      @article.articleid = Article.last.articleid + 1
+    else
+      @article.articleid = 1
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @article }

@@ -1,7 +1,7 @@
 Blog::Application.routes.draw do
   match '/logout' => "sessions#destroy", :as => "logout"
   match '/login' => "sessions#new", :as => "login"
-  #match '/signup' => "users#new", :as => "signup"
+  match '/signup' => "users#new", :as => "signup"
 
   resources :articles
   resources :users
