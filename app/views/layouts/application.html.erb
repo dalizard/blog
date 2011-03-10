@@ -1,34 +1,45 @@
 <!doctype html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<%- # paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -%>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	
-	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
-			 Remove this if you use the .htaccess -->
+  <meta charset="utf-8">
+
+	<%- # Always force latest IE rendering engine (even in intranet) & Chrome Frame. Remove this if you use the .htaccess -%>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	<title>Blog</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<!--  Mobile viewport optimized: j.mp/bplateviewport -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<%- # Mobile viewport optimized: j.mp/bplateviewport -%>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-	<link rel="shortcut icon" href="/favicon.ico">
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<%- # Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -%>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+	<%- # CSS: implied media="all" -%>
   <%= stylesheet_link_tag 'style' %>
-	<script src="http://use.typekit.com/ama4orc.js"></script>
-	<script>try{Typekit.load();}catch(e){}</script>
-  <%= javascript_include_tag 'modernizr', 'jquery.min.js', 'hoverIntent', 'rails', 'application' %>
-  <%= csrf_meta_tag %>
+
+	<%- # Uncomment if you are specifically targeting less enabled mobile browsers -%>
+	<%#= stylesheet_link_tag 'handheld', :media => 'handheld' %>
+
+	<%= csrf_meta_tag %>
+
+	<%- # All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -%>
+	<%= javascript_include_tag 'modernizr-1.7.min.js' %>
+
+	<%- # Typekit -%>
+	<%= javascript_include_tag 'http://use.typekit.com/ama4orc.js' %>
+	<%= javascript_tag 'try{Typekit.load();}catch(e){}' %>
+  
 </head>
+
 <body>
+
 	<header role="banner">
 		<div class="content-wrapper">
 			<hgroup>
@@ -66,10 +77,30 @@
 			</div>
 	</footer>
 
-<!--[if lt IE 7 ]>
-  <%= javascript_include_tag 'dd_belatedpng' %>
-  <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
-<![endif]-->
+	<%- # JavaScript at the bottom for fast page loading -%>
+
+	<%- # Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -%>
+	<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js' %>
+	<%= javascript_tag %{!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/jquery-1.5.1.min.js"%3E%3C/script%3E'))} %>
+
+	<%= javascript_include_tag 'rails', 'hoverIntent', 'application', :cache => true %>
+
+	<%- # Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb -%>
+	<!--[if lt IE 7 ]>
+		<%= javascript_include_tag 'dd_belatedpng.js' %>
+		<%= javascript_tag %{DD_belatedPNG.fix('img, .png_bg')} %>
+	<![endif]-->
+
+	<%- # mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -%>
+	<!-- <%- if Rails.env.production? -%>
+		<script>
+		  var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+		  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+		  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		  s.parentNode.insertBefore(g,s)}(document,'script'));
+		</script>
+	<%- end -%> -->
 
 </body>
+
 </html>

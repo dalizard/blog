@@ -1,4 +1,6 @@
-#require 'bundler/capistrano'
+# Run 'bundle install' automatically on the sercer
+require 'bundler/capistrano'
+
 require 'yaml'
 require 'pathname'
 
