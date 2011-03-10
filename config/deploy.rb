@@ -1,4 +1,4 @@
-require 'bundler/capistrano'
+#require 'bundler/capistrano'
 require 'yaml'
 require 'pathname'
 
@@ -14,7 +14,6 @@ set :use_sudo, false
 role :web, "calvin.forebits.com"                          # Your HTTP server, Apache/etc
 role :app, "calvin.forebits.com"                          # This may be the same as your `Web` server
 role :db,  "calvin.forebits.com", :primary => true # This is where Rails migrations will run
-role :db,  "calvin.forebits.com"
 
 set :sync_directories, ["public/system/images"]
 set :sync_backups, 3
@@ -36,26 +35,26 @@ end
 
 
 # Disable the built in disable command and setup some intelligence so we can have images.
-after "deploy:update_code", "deploy:web:update"
-disable_path = "#{shared_path}/system/maintenance/"
-namespace :deploy do
-  namespace :web do
-    desc "Disables the website by putting the maintenance files live."
-    task :disable, :roles => :web do
-      on_rollback { run "mv #{disable_path}index.html #{disable_path}index.disabled.html" }
-      run "mv #{disable_path}index.disabled.html #{disable_path}index.html"
-    end 
-    desc "Enables the website by disabling the maintenance files."
-    task :enable, :roles => :web do
-        run "mv #{disable_path}index.html #{disable_path}index.disabled.html"
-    end 
-    desc "Copies your maintenance from public/maintenance to shared/system/maintenance."
-    task :update, :roles => :web do
-      run "rm -rf #{shared_path}/system/maintenance/; true"
-      run "cp -r #{current_path}/public/maintenance #{shared_path}/system/"
-    end
-  end
-end
+# after "deploy:update_code", "deploy:web:update"
+# disable_path = "#{shared_path}/system/maintenance/"
+# namespace :deploy do
+#   namespace :web do
+#     desc "Disables the website by putting the maintenance files live."
+#     task :disable, :roles => :web do
+#       on_rollback { run "mv #{disable_path}index.html #{disable_path}index.disabled.html" }
+#       run "mv #{disable_path}index.disabled.html #{disable_path}index.html"
+#     end 
+#     desc "Enables the website by disabling the maintenance files."
+#     task :enable, :roles => :web do
+#         run "mv #{disable_path}index.html #{disable_path}index.disabled.html"
+#     end 
+#     desc "Copies your maintenance from public/maintenance to shared/system/maintenance."
+#     task :update, :roles => :web do
+#       run "rm -rf #{shared_path}/system/maintenance/; true"
+#       run "cp -r #{current_path}/public/maintenance #{shared_path}/system/"
+#     end
+#   end
+# end
 
 
 # Based on http://gist.github.com/111597 http://gist.github.com/339471
